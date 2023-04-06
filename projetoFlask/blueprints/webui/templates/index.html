@@ -1,0 +1,48 @@
+{% extends "bootstrap/base.html" %}
+{% block title %}{{config.get('TITLE')}}{% endblock %}
+
+{% block navbar %}
+
+{%- endblock navbar %}
+
+
+{% block content %}
+<div class="container">
+<h1>{{config.get('TITLE')}}</h1>
+<!--
+<div class="jumbotron">
+<ul class="list-group">
+    {% for product in products %}
+    <li class="list-group-item">
+        <a href="{{url_for('webui.productview', product_id=product.id)}}">{{product.name}} - {{ "%0.2f" | format(product.price)}}</a>
+    </li>
+    {% endfor %}
+</ul>
+</div>
+<div class="jumbotron">
+<ul class="list-group">
+    {% for livro in livros %}
+    <li class="list-group-item">
+        <a href="{{url_for('webui.livroview', livro_id=livro.id)}}">{{livro.name}} - {{(livro.description)}} - {{(livro.image_url)}}</a>
+    </li>
+    {% endfor %}
+</ul>
+</div>
+-->
+<div class="row">
+    {% for livro in livros %}
+      <div class="col-md-4">
+        <div class="card mb-4">
+        <img src="{{ livro.image_url }}" class="card-img-top" alt="{{ livro.name }}">
+          <div class="card-body">
+            <h5 class="card-title">{{ livro.name }}</h5>
+            <p class="card-text">{{ livro.description }}</p>
+            <a href="{{ url_for('webui.livroview', livro_id=livro.id) }}" class="btn btn-primary">Ler livro</a>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+  </div>
+
+</div>
+{% endblock %}

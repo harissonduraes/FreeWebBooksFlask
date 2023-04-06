@@ -1,0 +1,32 @@
+{% extends "index.html" %}
+{% block content %}
+<div class="container">
+
+<div class="jumbotron">
+<h1>{{ livro.name }}</h1>
+
+</div>
+
+    {% for pagina in paginas %}
+    <div class="page">
+
+      {% if pagina.number == pagina_atual %}
+        <h2>Página {{ pagina.number }}</h2>
+        <p>{{ pagina.content }}</p>
+      {% endif %}
+
+    </div>
+  {% endfor %}
+
+
+<div class="pagination">
+  {% if pagina_anterior != pagina_atual %}
+    <a href="{{ url_for('webui.livroview', livro_id=livro.id, pagina_atual=pagina_anterior) }}" class="btn btn-secondary">&lt; Página anterior</a>
+  {% endif %}
+  {% if pagina_seguinte != pagina_atual %}
+    <a href="{{ url_for('webui.livroview', livro_id=livro.id, pagina_atual=pagina_seguinte) }}" class="btn btn-secondary">Próxima página &gt;</a>
+  {% endif %}
+</div>
+
+</div>
+{% endblock %}

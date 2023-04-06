@@ -1,0 +1,22 @@
+{% extends "index.html" %}
+{% block content %}
+<div class="container">
+<h1></h1>
+
+<div class="jumbotron">
+<h2>R$ </h2>
+<p>
+
+</p>
+</div>
+
+    <div class="page">
+      <h2>Página {{ paginas.number }}</h2>
+      {% if paginas.id %}
+        <h3>{{ paginas.id_livro }}</h3>
+      {% endif %}
+      <p>{{ paginas.content }}</p>
+    </div>
+
+</div>
+{% endblock %}
